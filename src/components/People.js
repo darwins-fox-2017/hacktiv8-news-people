@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import logo from '../logo.svg';
-import '../App.css';
+
+import Header from './Header'
 import PeopleList from './PeopleList'
-import {Link} from 'react-router-dom'
+import '../App.css'
 
 class People extends Component {
   constructor() {
@@ -27,15 +27,7 @@ class People extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <nav>
-          <Link to="/">News</Link>
-          &nbsp;
-          <Link to="/people">People</Link>
-        </nav>
+        <Header />
         <PeopleList people={this.state.people} />
       </div>
     )

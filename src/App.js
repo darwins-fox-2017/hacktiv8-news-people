@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
 
-
-import logo from './logo.svg';
+import logo from './logo.svg'
 import './App.css';
 import Search from './components/Search'
 import NewsList from './components/NewsList'
+import Header from './components/Header'
 
 class App extends Component {
   constructor () {
@@ -19,7 +18,6 @@ class App extends Component {
 
   componentDidMount() {
     const self = this
-
     fetch('https://hn.algolia.com/api/v1/search?query=redux').then((response) => {
       return response.json()
     }).then((data) => {
@@ -38,20 +36,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <nav>
-          <Link to="/">News</Link>
-          &nbsp;
-          <Link to="/people">People</Link>
-        </nav>
+        <Header />
         <Search handleTextChange={(event) => this.changeKeyword(event)}/>
         <NewsList handleKeyword={this.state.keyword} data={this.state.data} />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
