@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-import logo from './logo.svg';
-import './App.css';
-import Search from './components/Search'
-import List from './components/List'
+import logo from '../logo.svg';
+import '../App.css';
+import Search from '../components/Search'
+import PeopleList from '../components/PeopleList'
 
 class App extends Component {
     constructor() {
@@ -22,10 +22,10 @@ class App extends Component {
 
     componentDidMount(){
       let self = this
-      axios.get('https://hn.algolia.com/api/v1/search?query=indonesia').then((response) => {
-        console.log('response : ', response.data.hits);
+      axios.get('http://swapi.co/api/people/').then((response) => {
+        console.log('response : ', response.data.results);
         self.setState({
-          data: response.data.hits
+          data: response.data.results
         })
         console.log(self.state.data);
       }).catch((error) => {
@@ -48,7 +48,7 @@ class App extends Component {
                       <Link to="/people">People </Link>
                     </nav>
                     <Search handleChange={this.searchNews.bind(this)}/>
-                    <List handleSearch={this.state.query} data={this.state.data} />
+                    <PeopleList handleSearch={this.state.query} data={this.state.data} />
 
                 </div>
             </div>
