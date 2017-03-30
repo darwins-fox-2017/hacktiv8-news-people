@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 import logo from './logo.svg'
-import './App.css';
+import './App.css'
 import Search from './components/Search'
 import NewsList from './components/NewsList'
 import Header from './components/Header'
